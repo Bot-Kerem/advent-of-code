@@ -1,1 +1,1 @@
-# Advent of Code solutions in C++
+# Advent of Code 2022 solutions in C++

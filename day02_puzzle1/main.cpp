@@ -138,6 +138,7 @@ int main()
 	{
 		score += play(line);
 	}
+	input.close();
 
 	std::cout << "Score: " << score << '\n';
 	return EXIT_SUCCESS;

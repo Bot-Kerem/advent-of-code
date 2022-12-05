@@ -45,6 +45,7 @@ int main()
 		}
 		current += std::atoi(line.c_str());
 	}
+	input.close();
 	place(top, current);
 
 	int top_sum = sum(top);

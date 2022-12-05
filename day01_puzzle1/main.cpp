@@ -22,6 +22,7 @@ int main()
 		}
 		current += std::atoi(line.c_str());
 	}
+	input.close();
 	if(current > highest)
 	{
 		highest = current;

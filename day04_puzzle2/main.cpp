@@ -24,15 +24,16 @@ bool contains(const std::string& line)
 
 int main()
 {
-	std::ifstream file("./input.txt");
+	std::ifstream input("./input.txt");
 	std::string line;
 
 	int count = 0;
 	
-	while(std::getline(file, line))
+	while(std::getline(input, line))
 	{
 		contains(line) ? count++ : NULL;
 	}
+	input.close();
 
 	std::cout << "Count: " << count << '\n';
 

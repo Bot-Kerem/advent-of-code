@@ -40,6 +40,7 @@ int main()
 	{
 		total_priorty += getPrioriy(line);
 	}
+	input.close();
 
 	std::cout << "Total: " << total_priorty << '\n';
 

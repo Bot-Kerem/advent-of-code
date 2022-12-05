@@ -70,6 +70,7 @@ int main()
 		}
 			group[group_index++] = line;
 	}
+	input.close();
 	total_priorty += getPrioriy(group);
 
 	std::cout << "Total: " << total_priorty << '\n';

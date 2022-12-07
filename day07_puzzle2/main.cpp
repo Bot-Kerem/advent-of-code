@@ -9,6 +9,8 @@
 #include <map>
 #include <algorithm>
 
+#define VISUALIZE
+
 struct File
 {
 	File(const std::string& _name, int _size) { name = _name; size = _size; }
@@ -136,23 +138,46 @@ class Filesystem
 			}
 		}
 
+		void visualize(const Directory& dir) const
+		{
+			static int depth = 0;
+
+			//for(int i = 0; i < depth; i++)
+			//{ putchar('\t'); }
+			std::cout << dir.getFullPath() << " (dir): " << dir.getSize() << '\n';
+			depth++;
+			for(const auto& file: dir.files)
+			{
+				//for(int i = 0; i < depth; i++)
+				//{ putchar('\t'); }
+				std::cout << dir.getFullPath() << file.name << " " << file.size << '\n';
+			}
+			for(const auto& d: dir.directories)
+			{
+				visualize(d);
+			}
+			depth--;
+		}
+
 		int getSolution(int size)
 		{
 			std::map<std::string, int> map;
 			writeSize(main_dir, map);
 
 			int result = RAND_MAX;
-			std::string dir;
+
 			for(auto const& [key, val]: map)
 			{
 				if(val >= size && val < result)
 				{
-					dir = key;
 					result = val;
 				}
 			}
 
-			std::cout << "Found optimal directory: " << dir << '\n';
+#ifdef VISUALIZE
+			visualize(main_dir);
+#endif
+
 			return result;
 		}
 };

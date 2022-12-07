@@ -1,3 +1,4 @@
+#include <cmath>
 #include <cstdio>
 #include <cstdlib>
 #include <fstream>
@@ -80,7 +81,7 @@ struct Directory
 
 class Filesystem
 {
-
+	const int device_space = 70000000;
 	Directory* current_dir = &main_dir;
 	private:
 		Directory main_dir{"/"};
@@ -158,9 +159,11 @@ class Filesystem
 
 			int result = RAND_MAX;
 
+			int required_space = std::abs(device_space - (size + main_dir.getSize()));
+
 			for(auto const& [key, val]: map)
 			{
-				if(val >= size && val < result)
+				if(val >= required_space && val < result)
 				{
 					result = val;
 				}
@@ -262,7 +265,7 @@ class Device
 		}
 		int getSolution()
 		{
-			return filesystem.getSolution(8381165);
+			return filesystem.getSolution(30000000);
 		}
 };
 

@@ -140,23 +140,16 @@ class Filesystem
 
 		void visualize(const Directory& dir) const
 		{
-			static int depth = 0;
-
-			//for(int i = 0; i < depth; i++)
-			//{ putchar('\t'); }
 			std::cout << dir.getFullPath() << " (dir): " << dir.getSize() << '\n';
 			depth++;
 			for(const auto& file: dir.files)
 			{
-				//for(int i = 0; i < depth; i++)
-				//{ putchar('\t'); }
 				std::cout << dir.getFullPath() << file.name << " " << file.size << '\n';
 			}
 			for(const auto& d: dir.directories)
 			{
 				visualize(d);
 			}
-			depth--;
 		}
 
 		int getSolution(int size)
